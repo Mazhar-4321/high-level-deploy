@@ -157,9 +157,7 @@ export default function SampleTabs() {
                     </TabPanel>
                 </SwipeableViews>
             </Box>
-            <div id='custom-drawer'>
-            <ResponsiveDrawer />
-            </div>
+            
         </>
     );
 }
