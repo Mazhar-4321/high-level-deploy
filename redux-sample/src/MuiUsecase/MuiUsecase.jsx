@@ -112,7 +112,7 @@ export default function SampleTabs() {
                     </Tabs>
                 </AppBar>
                 <SwipeableViews
-                    style={{ overflow: 'scroll' }}
+                    style={{ display:'flex',flexDirection:'row',justifyContent:'space-around' }}
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                     index={value}
                     onChangeIndex={handleChangeIndex}
