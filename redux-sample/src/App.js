@@ -5,6 +5,7 @@ import { CrudUsecase } from './crudUsecase/CrudUsecase';
 import SampleTabs from './MuiUsecase/MuiUsecase';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
+import { useEffect } from 'react';
 
 const theme = createTheme({
   palette: {
@@ -17,6 +18,11 @@ const theme = createTheme({
   },
 });
 function App() {
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => console.log(json))
+  })
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
