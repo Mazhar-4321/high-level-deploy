@@ -176,9 +176,19 @@ const [value,setValue]= React.useState(null)
                 </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                <Typography>
-                 Page1
-                </Typography>
+                <List>
+          {['Accordion', 'Autocomplete', 'Avatars', 'Buttons','Feedbacks','List',
+          'Loaders','Menu','Pagination','Ratings','Stepper','Table','Text Fields'].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton onClick={()=>{setValue(index);getLayout(index); handleDrawerClose()}}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
               </AccordionDetails>
                 </Accordion>
        
