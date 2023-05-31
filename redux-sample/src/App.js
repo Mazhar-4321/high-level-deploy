@@ -11,7 +11,7 @@ import SampleDrawer from './components/SampleDrawer';
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#1B9C85",
+      main: "rgb(0,0,0,1)",
     },
     secondary:{
       main:'#FFFFFF'
