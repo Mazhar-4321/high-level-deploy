@@ -86,10 +86,11 @@ export default function SampleTabs() {
                 <AppBar position="static">
                     <Tabs
                         value={value}
+                        
                         onChange={handleChange}
                         indicatorColor="secondary"
                         textColor="inherit"
-                        variant="fullWidth"
+                        variant="scrollable"
                         aria-label="full width tabs example"
                     >
                         <Tab label="Auto Complete" {...a11yProps(0)} />
@@ -112,7 +113,6 @@ export default function SampleTabs() {
                     </Tabs>
                 </AppBar>
                 <SwipeableViews
-                    style={{ display:'flex',flexDirection:'row',justifyContent:'space-around' }}
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                     index={value}
                     onChangeIndex={handleChangeIndex}

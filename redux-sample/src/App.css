@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+.sample-tabs{
+display: block;
+}
+.sample-drawer{
+display: none;
+}
+@media (min-width: 768px) and (max-width: 1024px){
+  .sample-tabs{
+    display: none;
+    }
+    .sample-drawer{
+    display: block;
+    }
+} 
+ @media (min-width: 481px) and  (max-width: 767px) {
+  .sample-tabs{
+    display: none;
+    }
+    .sample-drawer{
+    display: block;
+    }
+}
+@media (max-width: 480px) {
+  .sample-tabs{
+    display: none;
+    }
+    .sample-drawer{
+    display: block;
+    }
+}

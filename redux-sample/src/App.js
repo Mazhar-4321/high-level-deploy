@@ -6,6 +6,7 @@ import SampleTabs from './MuiUsecase/MuiUsecase';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import { useEffect } from 'react';
+import SampleDrawer from './components/SampleDrawer';
 
 const theme = createTheme({
   palette: {
@@ -26,7 +27,12 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        <div className='sample-tabs'>
       <SampleTabs />
+      </div>
+      <div className='sample-drawer'>
+      <SampleDrawer />
+      </div>
       </ThemeProvider>
     </div>
   );
