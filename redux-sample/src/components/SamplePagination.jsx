@@ -3,8 +3,11 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import PaginationItem from '@mui/material/PaginationItem';
 import Typography from '@mui/material/Typography';
 import Pagination from '@mui/material/Pagination';
+import EastOutlinedIcon from '@mui/icons-material/EastOutlined';
+import WestOutlinedIcon from '@mui/icons-material/WestOutlined';
 import { useState } from 'react';
 import { Grid } from '@mui/material';
 
@@ -53,7 +56,14 @@ export default function SamplePagination() {
                     </Grid>
                 </div>
                 <div style={{ position: 'sticky', width: '100%', height: '5%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                    <Pagination  color='primary' shape='rounded' onChange={changeEvent} count={Math.ceil(objects.length / PAGINATION_COUNT)} />
+                    <Pagination 
+                    renderItem={(item) => (
+                        <PaginationItem
+                          slots={{ previous:WestOutlinedIcon, next:  EastOutlinedIcon }}
+                          {...item}
+                        />
+                      )}
+                    color='primary' shape='rounded' onChange={changeEvent} count={Math.ceil(objects.length / PAGINATION_COUNT)} />
                 </div>
             </div>
 

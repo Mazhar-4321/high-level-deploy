@@ -83,7 +83,8 @@ export default function SampleDrawer() {
   const theme = useTheme();
   const [appbarText,setAppbarText] = React.useState('Test Mode')
   const [open, setOpen] = React.useState(false);
-const [value,setValue]= React.useState(-1)
+  const [element,setElement] = React.useState(<SampleTextFields />)
+const [value,setValue]= React.useState(null)
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -92,21 +93,21 @@ const [value,setValue]= React.useState(-1)
     setOpen(false);
   };
   const getLayout=(value)=>{
-    
+    console.log(value)
     switch(value){
-        case 0: setAppbarText('Sample Accordion'); return <SampleAccordion />;
-        case 1:setAppbarText('Sample Autocomplete'); return <SampleAutocomplete /> ;
-        case 2:setAppbarText('Sample Avatars'); return <SampleAvatars />;
-        case 3:setAppbarText('Sample Buttons'); return <SampleButtons /> ;
-        case 4:setAppbarText('Sample Alerts'); return <SampleAlert />;
-        case 5:setAppbarText('Sample List'); return <SampleList /> ;
-        case 6:setAppbarText('Sample Loaders'); return <SampleLoaders />;
-        case 7:setAppbarText('Sample Menu'); return <SampleMenu /> ;
-        case 8:setAppbarText('Sample Pagination'); return <SamplePagination />;
-        case 9:setAppbarText('Sample Rating'); return <SampleRatings /> ;
-        case 10:setAppbarText('Sample Stepper'); return <VerticalLinearStepper />;
-        case 11:setAppbarText('Sample Table'); return <SampleTable /> ;
-        default:setAppbarText('Sample Text Fields'); return <SampleTextFields />
+        case 0: setAppbarText('Sample Accordion'); setElement(<SampleAccordion />);break;
+        case 1:setAppbarText('Sample Autocomplete'); setElement (<SampleAutocomplete />) ;break;
+        case 2:setAppbarText('Sample Avatars'); setElement (<SampleAvatars />) ;break;
+        case 3:setAppbarText('Sample Buttons'); setElement (<SampleButtons />)  ;break;
+        case 4:setAppbarText('Sample Alerts'); setElement (<SampleAlert />) ;break;
+        case 5:setAppbarText('Sample List'); setElement (<SampleList />)  ;break;
+        case 6:setAppbarText('Sample Loaders'); setElement (<SampleLoaders />) ;break;
+        case 7:setAppbarText('Sample Menu'); setElement (<SampleMenu />)  ;break;
+        case 8:setAppbarText('Sample Pagination'); setElement (<SamplePagination />) ;break;
+        case 9:setAppbarText('Sample Rating'); setElement (<SampleRatings />)  ;break;
+        case 10:setAppbarText('Sample Stepper'); setElement (<VerticalLinearStepper />) ;break;
+        case 11:setAppbarText('Sample Accordion'); setElement (<SampleTable /> ) ;break;
+        case 12 :setAppbarText('Sample Text'); setElement (<SampleTextFields />) 
     }
   }
 
@@ -152,7 +153,7 @@ const [value,setValue]= React.useState(-1)
           {['Accordion', 'Autocomplete', 'Avatars', 'Buttons','Feedbacks','List',
           'Loaders','Menu','Pagination','Ratings','Stepper','Table','Text Fields'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton onClick={()=>{setValue(index);handleDrawerClose()}}>
+              <ListItemButton onClick={()=>{setValue(index);getLayout(index); handleDrawerClose()}}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
@@ -166,8 +167,9 @@ const [value,setValue]= React.useState(-1)
       <Main open={open}>
         <DrawerHeader />
        {
-        getLayout(value)
+        element
        }
+       
       </Main>
     </Box>
   );
