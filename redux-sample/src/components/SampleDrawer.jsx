@@ -32,6 +32,8 @@ import SampleList from './SampleList';
 import SampleAlert from './SampleFeedbacks';
 import SampleAvatars from './SampleAvatars';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import EastOutlinedIcon from '@mui/icons-material/EastOutlined';
+import WestOutlinedIcon from '@mui/icons-material/WestOutlined';
 
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 
@@ -214,7 +216,7 @@ export default function SampleDrawer() {
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? <WestOutlinedIcon /> : <EastOutlinedIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
@@ -231,9 +233,10 @@ export default function SampleDrawer() {
             </ListItem>
           ))}
         </List> */}
-        <Accordion sx={{ border: '0px solid rgb(0,0,0,1)', borderRadius: '0px', stroke: '0px', boxShadow: 'none' }}>
+        <Accordion sx={{ border: '0px solid rgb(0,0,0,1)', borderRadius: '0px', stroke: '0px', boxShadow: 'none',paddingBottom:'0px' }}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
+            style={{margin:'0px 0px -15px 0px'}}
             aria-controls="panel1bh-content"
             id="panel1bh-header"
           >
@@ -241,8 +244,8 @@ export default function SampleDrawer() {
               General
             </Typography>
           </AccordionSummary>
-          <AccordionDetails>
-            <List>
+          <AccordionDetails style={{padding:'0px 0px 0px 0px'}}>
+            <List sx={{padding:'0px 0px 0px 0px'}}>
               {listData.map((text, index) => (
                 <ListItem sx={{ background: text.background , color:text.background==BACKGROUND_NULL?'black':'white' }} key={text} disablePadding>
                   <ListItemButton onClick={() => { setValue(index); getLayout(index); handleDrawerClose() }}>
