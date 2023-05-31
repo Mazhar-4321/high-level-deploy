@@ -81,6 +81,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function SampleDrawer() {
   const theme = useTheme();
+  const [appbarText,setAppbarText] = React.useState('Test Mode')
   const [open, setOpen] = React.useState(false);
 const [value,setValue]= React.useState(-1)
   const handleDrawerOpen = () => {
@@ -93,19 +94,19 @@ const [value,setValue]= React.useState(-1)
   const getLayout=(value)=>{
     
     switch(value){
-        case 0: return <SampleAccordion />;
-        case 1: return <SampleAutocomplete /> ;
-        case 2: return <SampleAvatars />;
-        case 3: return <SampleButtons /> ;
-        case 4: return <SampleAlert />;
-        case 5: return <SampleList /> ;
-        case 6: return <SampleLoaders />;
-        case 7: return <SampleMenu /> ;
-        case 8: return <SamplePagination />;
-        case 9: return <SampleRatings /> ;
-        case 10: return <VerticalLinearStepper />;
-        case 11: return <SampleTable /> ;
-        default: return <SampleTextFields />
+        case 0: setAppbarText('Sample Accordion'); return <SampleAccordion />;
+        case 1:setAppbarText('Sample Autocomplete'); return <SampleAutocomplete /> ;
+        case 2:setAppbarText('Sample Avatars'); return <SampleAvatars />;
+        case 3:setAppbarText('Sample Buttons'); return <SampleButtons /> ;
+        case 4:setAppbarText('Sample Alerts'); return <SampleAlert />;
+        case 5:setAppbarText('Sample List'); return <SampleList /> ;
+        case 6:setAppbarText('Sample Loaders'); return <SampleLoaders />;
+        case 7:setAppbarText('Sample Menu'); return <SampleMenu /> ;
+        case 8:setAppbarText('Sample Pagination'); return <SamplePagination />;
+        case 9:setAppbarText('Sample Rating'); return <SampleRatings /> ;
+        case 10:setAppbarText('Sample Stepper'); return <VerticalLinearStepper />;
+        case 11:setAppbarText('Sample Table'); return <SampleTable /> ;
+        default:setAppbarText('Sample Text Fields'); return <SampleTextFields />
     }
   }
 
@@ -124,7 +125,7 @@ const [value,setValue]= React.useState(-1)
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-           Example Layouts
+           {appbarText}
           </Typography>
         </Toolbar>
       </AppBar>
