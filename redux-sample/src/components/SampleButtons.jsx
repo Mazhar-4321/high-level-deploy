@@ -15,7 +15,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export default function SampleButtons() {
 
   return (
-    <Stack spacing={2} direction="row">
+    <Stack sx={{width:'200px'}} spacing={2} direction="column">
       <Button variant="text">Text</Button>
       <Button variant="contained">Contained</Button>
       <Button variant="outlined">Outlined</Button>

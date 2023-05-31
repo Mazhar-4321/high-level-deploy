@@ -28,7 +28,7 @@ export default function SamplePagination() {
                         {tempObjects.map(e => {
                             return (
                                 <Grid item xs={12} sm={6} md={4} xl={3}>
-                                    <Card sx={{ minWidth: 275 }}>
+                                    <Card sx={{ minWidth: 275,border:'1px solid rgb(0,0,0,0.1)' }}>
                                         <CardContent>
                                             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                                 Word of the Day
