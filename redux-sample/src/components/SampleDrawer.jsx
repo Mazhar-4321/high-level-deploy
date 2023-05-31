@@ -31,6 +31,9 @@ import SampleLoaders from './SampleLoaders';
 import SampleList from './SampleList';
 import SampleAlert from './SampleFeedbacks';
 import SampleAvatars from './SampleAvatars';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -162,6 +165,22 @@ const [value,setValue]= React.useState(null)
             </ListItem>
           ))}
         </List>
+        <Accordion >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1bh-content"
+                id="panel1bh-header"
+              >
+                <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                  General
+                </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                <Typography>
+                 Page1
+                </Typography>
+              </AccordionDetails>
+                </Accordion>
        
       </Drawer>
       <Main open={open}>
