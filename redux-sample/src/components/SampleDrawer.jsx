@@ -165,7 +165,7 @@ const [value,setValue]= React.useState(null)
             </ListItem>
           ))}
         </List> */}
-        <Accordion >
+        <Accordion  sx={{border:'0px'}}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1bh-content"
