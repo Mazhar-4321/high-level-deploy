@@ -152,7 +152,7 @@ const [value,setValue]= React.useState(null)
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
+        {/* <List>
           {['Accordion', 'Autocomplete', 'Avatars', 'Buttons','Feedbacks','List',
           'Loaders','Menu','Pagination','Ratings','Stepper','Table','Text Fields'].map((text, index) => (
             <ListItem key={text} disablePadding>
@@ -164,7 +164,7 @@ const [value,setValue]= React.useState(null)
               </ListItemButton>
             </ListItem>
           ))}
-        </List>
+        </List> */}
         <Accordion >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
