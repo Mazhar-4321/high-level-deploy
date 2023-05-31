@@ -36,7 +36,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 
 const drawerWidth = 240;
-
+const BACKGROUND_SELECTED = 'rgb(0,0,0,1)'
+const BACKGROUND_NULL = 'rgb(0,0,0,0)'
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
@@ -84,10 +85,63 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function SampleDrawer() {
   const theme = useTheme();
-  const [appbarText,setAppbarText] = React.useState('Test Mode')
+  const [listData, setListData] = React.useState([{
+    title: 'Accordion',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Autocomplete',
+    background: BACKGROUND_NULL
+  },
+
+  {
+    title: 'Avatars',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Buttons',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Feedbacks',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'List',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Loaders',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Menu',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Pagination',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Ratings',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Stepper',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Table',
+    background: BACKGROUND_NULL
+  },
+  {
+    title: 'Text Fields',
+    background: BACKGROUND_NULL
+  },])
+  const [appbarText, setAppbarText] = React.useState('Test Mode')
   const [open, setOpen] = React.useState(false);
-  const [element,setElement] = React.useState(<SampleTextFields />)
-const [value,setValue]= React.useState(null)
+  const [element, setElement] = React.useState(<SampleTextFields />)
+  const [value, setValue] = React.useState(null)
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -95,22 +149,34 @@ const [value,setValue]= React.useState(null)
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const getLayout=(value)=>{
+  const getLayout = (value) => {
     console.log(value)
-    switch(value){
-        case 0: setAppbarText('Sample Accordion'); setElement(<SampleAccordion />);break;
-        case 1:setAppbarText('Sample Autocomplete'); setElement (<SampleAutocomplete />) ;break;
-        case 2:setAppbarText('Sample Avatars'); setElement (<SampleAvatars />) ;break;
-        case 3:setAppbarText('Sample Buttons'); setElement (<SampleButtons />)  ;break;
-        case 4:setAppbarText('Sample Alerts'); setElement (<SampleAlert />) ;break;
-        case 5:setAppbarText('Sample List'); setElement (<SampleList />)  ;break;
-        case 6:setAppbarText('Sample Loaders'); setElement (<SampleLoaders />) ;break;
-        case 7:setAppbarText('Sample Menu'); setElement (<SampleMenu />)  ;break;
-        case 8:setAppbarText('Sample Pagination'); setElement (<SamplePagination />) ;break;
-        case 9:setAppbarText('Sample Rating'); setElement (<SampleRatings />)  ;break;
-        case 10:setAppbarText('Sample Stepper'); setElement (<VerticalLinearStepper />) ;break;
-        case 11:setAppbarText('Sample Accordion'); setElement (<SampleTable /> ) ;break;
-        case 12 :setAppbarText('Sample Text'); setElement (<SampleTextFields />) 
+    let oldArray = [...listData]
+    oldArray = oldArray.map((e, i) => {
+      if (i == value) {
+        e.background = BACKGROUND_SELECTED
+      } else {
+        e.background = BACKGROUND_NULL
+      }
+      return e
+
+    }
+    )
+    setListData(oldArray)
+    switch (value) {
+      case 0: setAppbarText('Sample Accordion'); setElement(<SampleAccordion />); break;
+      case 1: setAppbarText('Sample Autocomplete'); setElement(<SampleAutocomplete />); break;
+      case 2: setAppbarText('Sample Avatars'); setElement(<SampleAvatars />); break;
+      case 3: setAppbarText('Sample Buttons'); setElement(<SampleButtons />); break;
+      case 4: setAppbarText('Sample Alerts'); setElement(<SampleAlert />); break;
+      case 5: setAppbarText('Sample List'); setElement(<SampleList />); break;
+      case 6: setAppbarText('Sample Loaders'); setElement(<SampleLoaders />); break;
+      case 7: setAppbarText('Sample Menu'); setElement(<SampleMenu />); break;
+      case 8: setAppbarText('Sample Pagination'); setElement(<SamplePagination />); break;
+      case 9: setAppbarText('Sample Rating'); setElement(<SampleRatings />); break;
+      case 10: setAppbarText('Sample Stepper'); setElement(<VerticalLinearStepper />); break;
+      case 11: setAppbarText('Sample Accordion'); setElement(<SampleTable />); break;
+      case 12: setAppbarText('Sample Text'); setElement(<SampleTextFields />)
     }
   }
 
@@ -129,7 +195,7 @@ const [value,setValue]= React.useState(null)
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-           {appbarText}
+            {appbarText}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -165,40 +231,39 @@ const [value,setValue]= React.useState(null)
             </ListItem>
           ))}
         </List> */}
-        <Accordion  sx={{border:'0px solid rgb(0,0,0,1)',borderRadius:'0px',stroke:'0px',boxShadow:'none'}}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1bh-content"
-                id="panel1bh-header"
-              >
-                <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                  General
-                </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                <List>
-          {['Accordion', 'Autocomplete', 'Avatars', 'Buttons','Feedbacks','List',
-          'Loaders','Menu','Pagination','Ratings','Stepper','Table','Text Fields'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton onClick={()=>{setValue(index);getLayout(index); handleDrawerClose()}}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-              </AccordionDetails>
-                </Accordion>
-       
+        <Accordion sx={{ border: '0px solid rgb(0,0,0,1)', borderRadius: '0px', stroke: '0px', boxShadow: 'none' }}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1bh-content"
+            id="panel1bh-header"
+          >
+            <Typography sx={{ width: '33%', flexShrink: 0 }}>
+              General
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <List>
+              {listData.map((text, index) => (
+                <ListItem sx={{ background: text.background , color:text.background==BACKGROUND_NULL?'black':'white' }} key={text} disablePadding>
+                  <ListItemButton onClick={() => { setValue(index); getLayout(index); handleDrawerClose() }}>
+                    <ListItemIcon sx={{color:text.background==BACKGROUND_NULL?'black':'white'}}>
+                      {index % 2 === 0 ? <InboxIcon  /> : <MailIcon />}
+                    </ListItemIcon>
+                    <ListItemText primary={text.title} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </AccordionDetails>
+        </Accordion>
+
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-       {
-        element
-       }
-       
+        {
+          element
+        }
+
       </Main>
     </Box>
   );
